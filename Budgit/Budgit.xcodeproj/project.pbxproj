@@ -1,0 +1,603 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C27C7C042C8CF3910032A00C /* BudgitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C032C8CF3910032A00C /* BudgitApp.swift */; };
+		C27C7C062C8CF3910032A00C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C052C8CF3910032A00C /* ContentView.swift */; };
+		C27C7C082C8CF3910032A00C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C072C8CF3910032A00C /* Item.swift */; };
+		C27C7C0A2C8CF3920032A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27C7C092C8CF3920032A00C /* Assets.xcassets */; };
+		C27C7C0D2C8CF3920032A00C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27C7C0C2C8CF3920032A00C /* Preview Assets.xcassets */; };
+		C27C7C172C8CF3920032A00C /* BudgitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C162C8CF3920032A00C /* BudgitTests.swift */; };
+		C27C7C212C8CF3920032A00C /* BudgitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C202C8CF3920032A00C /* BudgitUITests.swift */; };
+		C27C7C232C8CF3920032A00C /* BudgitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C222C8CF3920032A00C /* BudgitUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C27C7C132C8CF3920032A00C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C27C7BF82C8CF3900032A00C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C27C7BFF2C8CF3900032A00C;
+			remoteInfo = Budgit;
+		};
+		C27C7C1D2C8CF3920032A00C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C27C7BF82C8CF3900032A00C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C27C7BFF2C8CF3900032A00C;
+			remoteInfo = Budgit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C27C7C002C8CF3910032A00C /* Budgit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C27C7C032C8CF3910032A00C /* BudgitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgitApp.swift; sourceTree = "<group>"; };
+		C27C7C052C8CF3910032A00C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C27C7C072C8CF3910032A00C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		C27C7C092C8CF3920032A00C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C27C7C0C2C8CF3920032A00C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C27C7C122C8CF3920032A00C /* BudgitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C27C7C162C8CF3920032A00C /* BudgitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgitTests.swift; sourceTree = "<group>"; };
+		C27C7C1C2C8CF3920032A00C /* BudgitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C27C7C202C8CF3920032A00C /* BudgitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgitUITests.swift; sourceTree = "<group>"; };
+		C27C7C222C8CF3920032A00C /* BudgitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C27C7BFD2C8CF3900032A00C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C27C7C0F2C8CF3920032A00C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C27C7C192C8CF3920032A00C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C27C7BF72C8CF3900032A00C = {
+			isa = PBXGroup;
+			children = (
+				C27C7C022C8CF3910032A00C /* Budgit */,
+				C27C7C152C8CF3920032A00C /* BudgitTests */,
+				C27C7C1F2C8CF3920032A00C /* BudgitUITests */,
+				C27C7C012C8CF3910032A00C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C27C7C012C8CF3910032A00C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C27C7C002C8CF3910032A00C /* Budgit.app */,
+				C27C7C122C8CF3920032A00C /* BudgitTests.xctest */,
+				C27C7C1C2C8CF3920032A00C /* BudgitUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C27C7C022C8CF3910032A00C /* Budgit */ = {
+			isa = PBXGroup;
+			children = (
+				C27C7C032C8CF3910032A00C /* BudgitApp.swift */,
+				C27C7C052C8CF3910032A00C /* ContentView.swift */,
+				C27C7C072C8CF3910032A00C /* Item.swift */,
+				C27C7C092C8CF3920032A00C /* Assets.xcassets */,
+				C27C7C0B2C8CF3920032A00C /* Preview Content */,
+			);
+			path = Budgit;
+			sourceTree = "<group>";
+		};
+		C27C7C0B2C8CF3920032A00C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C27C7C0C2C8CF3920032A00C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C27C7C152C8CF3920032A00C /* BudgitTests */ = {
+			isa = PBXGroup;
+			children = (
+				C27C7C162C8CF3920032A00C /* BudgitTests.swift */,
+			);
+			path = BudgitTests;
+			sourceTree = "<group>";
+		};
+		C27C7C1F2C8CF3920032A00C /* BudgitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C27C7C202C8CF3920032A00C /* BudgitUITests.swift */,
+				C27C7C222C8CF3920032A00C /* BudgitUITestsLaunchTests.swift */,
+			);
+			path = BudgitUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C27C7BFF2C8CF3900032A00C /* Budgit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C27C7C262C8CF3920032A00C /* Build configuration list for PBXNativeTarget "Budgit" */;
+			buildPhases = (
+				C27C7BFC2C8CF3900032A00C /* Sources */,
+				C27C7BFD2C8CF3900032A00C /* Frameworks */,
+				C27C7BFE2C8CF3900032A00C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Budgit;
+			productName = Budgit;
+			productReference = C27C7C002C8CF3910032A00C /* Budgit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C27C7C112C8CF3920032A00C /* BudgitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C27C7C292C8CF3920032A00C /* Build configuration list for PBXNativeTarget "BudgitTests" */;
+			buildPhases = (
+				C27C7C0E2C8CF3920032A00C /* Sources */,
+				C27C7C0F2C8CF3920032A00C /* Frameworks */,
+				C27C7C102C8CF3920032A00C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C27C7C142C8CF3920032A00C /* PBXTargetDependency */,
+			);
+			name = BudgitTests;
+			productName = BudgitTests;
+			productReference = C27C7C122C8CF3920032A00C /* BudgitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C27C7C1B2C8CF3920032A00C /* BudgitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C27C7C2C2C8CF3920032A00C /* Build configuration list for PBXNativeTarget "BudgitUITests" */;
+			buildPhases = (
+				C27C7C182C8CF3920032A00C /* Sources */,
+				C27C7C192C8CF3920032A00C /* Frameworks */,
+				C27C7C1A2C8CF3920032A00C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C27C7C1E2C8CF3920032A00C /* PBXTargetDependency */,
+			);
+			name = BudgitUITests;
+			productName = BudgitUITests;
+			productReference = C27C7C1C2C8CF3920032A00C /* BudgitUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C27C7BF82C8CF3900032A00C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					C27C7BFF2C8CF3900032A00C = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					C27C7C112C8CF3920032A00C = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = C27C7BFF2C8CF3900032A00C;
+					};
+					C27C7C1B2C8CF3920032A00C = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = C27C7BFF2C8CF3900032A00C;
+					};
+				};
+			};
+			buildConfigurationList = C27C7BFB2C8CF3900032A00C /* Build configuration list for PBXProject "Budgit" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C27C7BF72C8CF3900032A00C;
+			productRefGroup = C27C7C012C8CF3910032A00C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C27C7BFF2C8CF3900032A00C /* Budgit */,
+				C27C7C112C8CF3920032A00C /* BudgitTests */,
+				C27C7C1B2C8CF3920032A00C /* BudgitUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C27C7BFE2C8CF3900032A00C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27C7C0D2C8CF3920032A00C /* Preview Assets.xcassets in Resources */,
+				C27C7C0A2C8CF3920032A00C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C27C7C102C8CF3920032A00C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C27C7C1A2C8CF3920032A00C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C27C7BFC2C8CF3900032A00C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27C7C062C8CF3910032A00C /* ContentView.swift in Sources */,
+				C27C7C082C8CF3910032A00C /* Item.swift in Sources */,
+				C27C7C042C8CF3910032A00C /* BudgitApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C27C7C0E2C8CF3920032A00C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27C7C172C8CF3920032A00C /* BudgitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C27C7C182C8CF3920032A00C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C27C7C212C8CF3920032A00C /* BudgitUITests.swift in Sources */,
+				C27C7C232C8CF3920032A00C /* BudgitUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C27C7C142C8CF3920032A00C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C27C7BFF2C8CF3900032A00C /* Budgit */;
+			targetProxy = C27C7C132C8CF3920032A00C /* PBXContainerItemProxy */;
+		};
+		C27C7C1E2C8CF3920032A00C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C27C7BFF2C8CF3900032A00C /* Budgit */;
+			targetProxy = C27C7C1D2C8CF3920032A00C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C27C7C242C8CF3920032A00C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C27C7C252C8CF3920032A00C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C27C7C272C8CF3920032A00C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Budgit/Preview Content\"";
+				DEVELOPMENT_TEAM = 6H9A597MB9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Budgit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianjm21.Budgit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C27C7C282C8CF3920032A00C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Budgit/Preview Content\"";
+				DEVELOPMENT_TEAM = 6H9A597MB9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Budgit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianjm21.Budgit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C27C7C2A2C8CF3920032A00C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6H9A597MB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianjm21.BudgitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Budgit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Budgit";
+			};
+			name = Debug;
+		};
+		C27C7C2B2C8CF3920032A00C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6H9A597MB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianjm21.BudgitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Budgit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Budgit";
+			};
+			name = Release;
+		};
+		C27C7C2D2C8CF3920032A00C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6H9A597MB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianjm21.BudgitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Budgit;
+			};
+			name = Debug;
+		};
+		C27C7C2E2C8CF3920032A00C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6H9A597MB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.brianjm21.BudgitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Budgit;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C27C7BFB2C8CF3900032A00C /* Build configuration list for PBXProject "Budgit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27C7C242C8CF3920032A00C /* Debug */,
+				C27C7C252C8CF3920032A00C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C27C7C262C8CF3920032A00C /* Build configuration list for PBXNativeTarget "Budgit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27C7C272C8CF3920032A00C /* Debug */,
+				C27C7C282C8CF3920032A00C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C27C7C292C8CF3920032A00C /* Build configuration list for PBXNativeTarget "BudgitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27C7C2A2C8CF3920032A00C /* Debug */,
+				C27C7C2B2C8CF3920032A00C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C27C7C2C2C8CF3920032A00C /* Build configuration list for PBXNativeTarget "BudgitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C27C7C2D2C8CF3920032A00C /* Debug */,
+				C27C7C2E2C8CF3920032A00C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C27C7BF82C8CF3900032A00C /* Project object */;
+}
