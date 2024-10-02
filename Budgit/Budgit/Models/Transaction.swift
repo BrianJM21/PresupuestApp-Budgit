@@ -7,12 +7,16 @@
 
 import Foundation
 
-struct Transaction {
-    var timeStamp: Date
+struct Transaction: Codable {
+    var timeStamp: Date = Date()
     var tile: String
     var description: String?
     var amount: Double
-    var isIncome: Bool?
-    var isExpense: Bool?
-    var isTransfer: Bool?
+    var type: TransactionType
+    
+    enum TransactionType: String, Codable {
+        case income = "income"
+        case expense = "expense"
+        case transfer = "transfer"
+    }
 }
