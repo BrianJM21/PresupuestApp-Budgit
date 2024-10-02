@@ -15,6 +15,10 @@
 		C27C7C172C8CF3920032A00C /* BudgitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C162C8CF3920032A00C /* BudgitTests.swift */; };
 		C27C7C212C8CF3920032A00C /* BudgitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C202C8CF3920032A00C /* BudgitUITests.swift */; };
 		C27C7C232C8CF3920032A00C /* BudgitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C222C8CF3920032A00C /* BudgitUITestsLaunchTests.swift */; };
+		C2D197A62CAD0AA50008E1D9 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D197A52CAD0A9D0008E1D9 /* Account.swift */; };
+		C2D197A82CAD0B930008E1D9 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D197A72CAD0B8C0008E1D9 /* Budget.swift */; };
+		C2D197AA2CAD0BA80008E1D9 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D197A92CAD0B970008E1D9 /* Transaction.swift */; };
+		C2D197AE2CAD13320008E1D9 /* Periodicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D197AD2CAD12EB0008E1D9 /* Periodicity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,10 @@
 		C27C7C1C2C8CF3920032A00C /* BudgitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27C7C202C8CF3920032A00C /* BudgitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgitUITests.swift; sourceTree = "<group>"; };
 		C27C7C222C8CF3920032A00C /* BudgitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C2D197A52CAD0A9D0008E1D9 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		C2D197A72CAD0B8C0008E1D9 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
+		C2D197A92CAD0B970008E1D9 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		C2D197AD2CAD12EB0008E1D9 /* Periodicity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Periodicity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,7 @@
 		C27C7C022C8CF3910032A00C /* Budgit */ = {
 			isa = PBXGroup;
 			children = (
+				C2D197A42CAD0A8A0008E1D9 /* Models */,
 				C27C7C032C8CF3910032A00C /* BudgitApp.swift */,
 				C27C7C052C8CF3910032A00C /* ContentView.swift */,
 				C27C7C072C8CF3910032A00C /* Item.swift */,
@@ -128,6 +137,17 @@
 				C27C7C222C8CF3920032A00C /* BudgitUITestsLaunchTests.swift */,
 			);
 			path = BudgitUITests;
+			sourceTree = "<group>";
+		};
+		C2D197A42CAD0A8A0008E1D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C2D197AD2CAD12EB0008E1D9 /* Periodicity.swift */,
+				C2D197A92CAD0B970008E1D9 /* Transaction.swift */,
+				C2D197A72CAD0B8C0008E1D9 /* Budget.swift */,
+				C2D197A52CAD0A9D0008E1D9 /* Account.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +281,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C27C7C062C8CF3910032A00C /* ContentView.swift in Sources */,
+				C2D197AE2CAD13320008E1D9 /* Periodicity.swift in Sources */,
+				C2D197A62CAD0AA50008E1D9 /* Account.swift in Sources */,
+				C2D197AA2CAD0BA80008E1D9 /* Transaction.swift in Sources */,
+				C2D197A82CAD0B930008E1D9 /* Budget.swift in Sources */,
 				C27C7C082C8CF3910032A00C /* Item.swift in Sources */,
 				C27C7C042C8CF3910032A00C /* BudgitApp.swift in Sources */,
 			);
