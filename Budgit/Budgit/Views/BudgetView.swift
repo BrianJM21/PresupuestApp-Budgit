@@ -12,6 +12,7 @@ struct BudgetView: View {
     var budgets: [Budget] = []
     
     @State private var selectedBudget: Budget?
+    @State private var isAddBudgetViewPresented: Bool = false
     
     var body: some View {
         
@@ -41,8 +42,11 @@ struct BudgetView: View {
                 Text("Start adding budgets to see them here.")
             } actions: {
                 Button("Add budget") {
-                    print("add budget action")
+                    isAddBudgetViewPresented = true
                 }
+            }
+            .sheet(isPresented: $isAddBudgetViewPresented) {
+                AddBudgetView(isAddBudgetViewPresented: $isAddBudgetViewPresented)
             }
 
         }

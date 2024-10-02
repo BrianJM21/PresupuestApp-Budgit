@@ -11,19 +11,15 @@ struct AccountView: View {
     
     var accounts: [Account] = []
     
+    @State private var isAddAccountViewPresented: Bool = false
+    
     var body: some View {
-        
         if !accounts.isEmpty {
             List {
                 ForEach(accounts) { account in
                     LabeledContent(account.name, value: account.balance, format: .currency(code: "MXN"))
                 }
             }
-            
-            Button("", systemImage: "plus.circle.fill") {
-                print("Add action")
-            }
-            .font(.system(size: 50))
         } else {
             ContentUnavailableView {
                 Label("No accounts", systemImage: "creditcard")
@@ -31,10 +27,12 @@ struct AccountView: View {
                 Text("Start adding accounts to see them here.")
             } actions: {
                 Button("Add account") {
-                    print("add account action")
+                    isAddAccountViewPresented = true
                 }
             }
-
+            .sheet(isPresented: $isAddAccountViewPresented) {
+                AddAccountView(isAddAccountViewPresented: $isAddAccountViewPresented)
+            }
         }
     }
     

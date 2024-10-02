@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C258EF752CAD9EAF0064A14E /* AddBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C258EF742CAD9EA50064A14E /* AddBudgetView.swift */; };
+		C258EF772CAD9EBD0064A14E /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C258EF762CAD9EB20064A14E /* AddAccountView.swift */; };
+		C258EF792CAD9EC70064A14E /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C258EF782CAD9EC10064A14E /* AddTransactionView.swift */; };
 		C27C7C042C8CF3910032A00C /* BudgitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C032C8CF3910032A00C /* BudgitApp.swift */; };
 		C27C7C062C8CF3910032A00C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27C7C052C8CF3910032A00C /* ContentView.swift */; };
 		C27C7C0A2C8CF3920032A00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27C7C092C8CF3920032A00C /* Assets.xcassets */; };
@@ -40,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C258EF742CAD9EA50064A14E /* AddBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetView.swift; sourceTree = "<group>"; };
+		C258EF762CAD9EB20064A14E /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
+		C258EF782CAD9EC10064A14E /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
+		C26002582CADBB9C00B5FD7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C27C7C002C8CF3910032A00C /* Budgit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Budgit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27C7C032C8CF3910032A00C /* BudgitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgitApp.swift; sourceTree = "<group>"; };
 		C27C7C052C8CF3910032A00C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,6 +113,7 @@
 		C27C7C022C8CF3910032A00C /* Budgit */ = {
 			isa = PBXGroup;
 			children = (
+				C26002582CADBB9C00B5FD7B /* Info.plist */,
 				C2D197AF2CAD195E0008E1D9 /* Views */,
 				C2D197A42CAD0A8A0008E1D9 /* Models */,
 				C27C7C032C8CF3910032A00C /* BudgitApp.swift */,
@@ -155,6 +163,9 @@
 		C2D197AF2CAD195E0008E1D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C258EF782CAD9EC10064A14E /* AddTransactionView.swift */,
+				C258EF762CAD9EB20064A14E /* AddAccountView.swift */,
+				C258EF742CAD9EA50064A14E /* AddBudgetView.swift */,
 				C2D197B42CAD28160008E1D9 /* BudgetView.swift */,
 				C2D197B22CAD28090008E1D9 /* AccountView.swift */,
 			);
@@ -292,7 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C27C7C062C8CF3910032A00C /* ContentView.swift in Sources */,
+				C258EF792CAD9EC70064A14E /* AddTransactionView.swift in Sources */,
 				C2D197B52CAD281B0008E1D9 /* BudgetView.swift in Sources */,
+				C258EF772CAD9EBD0064A14E /* AddAccountView.swift in Sources */,
+				C258EF752CAD9EAF0064A14E /* AddBudgetView.swift in Sources */,
 				C2D197AE2CAD13320008E1D9 /* Periodicity.swift in Sources */,
 				C2D197A62CAD0AA50008E1D9 /* Account.swift in Sources */,
 				C2D197AA2CAD0BA80008E1D9 /* Transaction.swift in Sources */,
@@ -465,11 +479,11 @@
 				DEVELOPMENT_TEAM = 6H9A597MB9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Budgit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Budgit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -497,11 +511,11 @@
 				DEVELOPMENT_TEAM = 6H9A597MB9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Budgit/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Budgit;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

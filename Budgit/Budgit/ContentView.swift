@@ -19,13 +19,23 @@ struct ContentView: View {
         }
         .pickerStyle(.segmented)
         .padding()
+        .overlay(alignment: .center) {
+            ZStack {
+                Circle()
+                    .frame(width: 30, height: 30)
+                    .foregroundStyle(.white)
+                Button("", systemImage: "plus.circle.fill") {
+                    print("add action button")
+                }
+                .font(.system(size: 50))
+            }
+        }
         
         if selectedView == 0 {
             AccountView()
         } else {
             BudgetView()
         }
-        
     }
     
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Periodicity: Codable {
+enum Periodicity: Codable, Hashable {
     
     case daily
     case weekly
@@ -16,7 +16,7 @@ enum Periodicity: Codable {
     case custom(CustomPeriodicity)
     case never
     
-    struct CustomPeriodicity: Codable {
+    struct CustomPeriodicity: Codable, Hashable {
         var days: Int
         var months: Int
         var years: Int
