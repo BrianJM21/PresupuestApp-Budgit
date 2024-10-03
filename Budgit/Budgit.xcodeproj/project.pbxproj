@@ -90,6 +90,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2303AD12CAF658B005ECB8E /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				C2D197B22CAD28090008E1D9 /* AccountView.swift */,
+				C258EF762CAD9EB20064A14E /* AddAccountView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		C2303AD22CAF6591005ECB8E /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				C2D197B42CAD28160008E1D9 /* BudgetView.swift */,
+				C258EF742CAD9EA50064A14E /* AddBudgetView.swift */,
+			);
+			path = Budget;
+			sourceTree = "<group>";
+		};
+		C2303AD32CAF6598005ECB8E /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				C258EF782CAD9EC10064A14E /* AddTransactionView.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
 		C27C7BF72C8CF3900032A00C = {
 			isa = PBXGroup;
 			children = (
@@ -163,11 +189,9 @@
 		C2D197AF2CAD195E0008E1D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C258EF782CAD9EC10064A14E /* AddTransactionView.swift */,
-				C258EF762CAD9EB20064A14E /* AddAccountView.swift */,
-				C258EF742CAD9EA50064A14E /* AddBudgetView.swift */,
-				C2D197B42CAD28160008E1D9 /* BudgetView.swift */,
-				C2D197B22CAD28090008E1D9 /* AccountView.swift */,
+				C2303AD32CAF6598005ECB8E /* Transaction */,
+				C2303AD22CAF6591005ECB8E /* Budget */,
+				C2303AD12CAF658B005ECB8E /* Account */,
 			);
 			path = Views;
 			sourceTree = "<group>";
