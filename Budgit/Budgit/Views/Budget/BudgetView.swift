@@ -27,7 +27,7 @@ struct BudgetView: View {
             List {
                 ForEach(selectedBudget?.transactions ?? [], id: \Transaction.timeStamp) { transaction in
                     VStack(alignment: .leading) {
-                        Text(transaction.timeStamp.formatted())
+                        Text(transaction.date.formatted())
                             .font(.system(size: 10))
                         LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
                         Text(transaction.description ?? "")
@@ -55,13 +55,13 @@ struct BudgetView: View {
 
 #Preview {
     let semanal = {
-        var s = Budget(name: "Gasto Semanal", budget: 800, periodicity: .weekly)
-        s.transactions = [Transaction(tile: "gasto A", amount: 100, type: .expense), Transaction(tile: "gasto B", amount: 200, type: .expense)]
+        var s = Budget(name: "Gasto Semanal", budget: 800, balance: 2000, periodicity: .weekly)
+        s.transactions = [Transaction(tile: "gasto A", amount: 100, date: .now, type: .expense), Transaction(tile: "gasto B", amount: 200, date: .now, type: .expense)]
         return s
     }()
     let mensual = {
-        var s = Budget(name: "Gasto Mensual", budget: 1200, periodicity: .monthly)
-        s.transactions = [Transaction(tile: "gasto A", amount: 300, type: .income), Transaction(tile: "gasto B", amount: 400, type: .transfer)]
+        var s = Budget(name: "Gasto Mensual", budget: 1200, balance: 3000, periodicity: .monthly)
+        s.transactions = [Transaction(tile: "gasto A", amount: 300, date: .now, type: .income), Transaction(tile: "gasto B", amount: 400, date: .now, type: .transfer)]
         return s
     }()
     BudgetView(budgets: [semanal, mensual])

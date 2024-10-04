@@ -17,6 +17,8 @@ struct AddBudgetView: View {
     @State private var months: String = ""
     @State private var years: String = ""
     @Binding var isViewPresented: Bool
+    @State private var isInvalidBalance: Bool = false
+    @State private var isInvalidPeriodicity: Bool = false
     
     var body: some View {
         HStack {
@@ -36,10 +38,12 @@ struct AddBudgetView: View {
             LabeledContent("Balance:") {
                 TextField("Enter total budget balance", text: $balance)
                     .multilineTextAlignment(.trailing)
+                    .keyboardType(.numbersAndPunctuation)
             }
             LabeledContent("Current Balance:") {
                 TextField("Enter current budget balance", text: $currentBalance)
                     .multilineTextAlignment(.trailing)
+                    .keyboardType(.numbersAndPunctuation)
             }
             Picker("Periodicity", selection: $periodicity) {
                 Text("Never").tag(Budget.Periodicity.never)
@@ -49,21 +53,74 @@ struct AddBudgetView: View {
                 Text("Yearly").tag(Budget.Periodicity.yearly)
                 Text("Custom").tag(Budget.Periodicity.custom(.init(days: 0, months: 0, years: 0)))
             }
-            if periodicity == .custom(.init(days: 0, months: 0, years: 0)) {
+            if periodicity == .custom(.init()) {
                 LabeledContent("Days:") {
                     TextField("Enter days periodicity", text: $days)
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
                 }
                 LabeledContent("Months:") {
                     TextField("Enter months periodicity", text: $months)
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
                 }
                 LabeledContent("Years:") {
                     TextField("Enter years periodicity", text: $years)
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
                 }
             }
             Button("Add budget") {
-                isViewPresented = false
+                if let balance = Double(balance), balance > 0, let currentBalance = Double(currentBalance) {
+                    let newBudget = Budget(name: name, budget: balance, balance: currentBalance, periodicity: periodicity)
+                    
+                    if periodicity == .custom(.init()) {
+                        var daysInt: Int = 0
+                        var monthsInt: Int = 0
+                        var yearsInt: Int = 0
+                        
+                        if !days.isEmpty {
+                            if let days = Int(days), days > 0 {
+                                daysInt = days
+                            } else {
+                                isInvalidPeriodicity = true
+                            }
+                        }
+                        if !months.isEmpty {
+                            if let months = Int(months), months > 0 {
+                                monthsInt = months
+                            } else {
+                                isInvalidPeriodicity = true
+                            }
+                        }
+                        if !years.isEmpty {
+                            if let years = Int(years), years > 0 {
+                                yearsInt = years
+                            } else {
+                                isInvalidPeriodicity = true
+                            }
+                        }
+                        
+                        newBudget.periodicity = .custom(.init(days: daysInt, months: monthsInt, years: yearsInt))
+                        isViewPresented = false
+                    } else {
+                        isViewPresented = false
+                    }
+                } else {
+                    isInvalidBalance = true
+                }
             }
             .frame(maxWidth: .infinity, alignment: .center)
+            .alert("Invalid account balance", isPresented: $isInvalidBalance) {
+                Button("OK", role: .cancel) {
+                    isInvalidBalance = false
+                }
+            }
+            .alert("Invalid periodicity", isPresented: $isInvalidPeriodicity) {
+                Button("OK", role: .cancel) {
+                    isInvalidBalance = false
+                }
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ struct Transaction: Codable {
     var tile: String
     var description: String?
     var amount: Double
+    var date: Date
     var type: TransactionType
     
     enum TransactionType: String, Codable {

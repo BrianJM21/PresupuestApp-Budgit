@@ -16,17 +16,16 @@ import SwiftData
     var transactions: [Transaction]
     var periodicity: Periodicity
     
-    init(name: String, budget: Double, periodicity: Periodicity) {
+    init(name: String, budget: Double, balance: Double, periodicity: Periodicity) {
         self.timeStamp = Date()
         self.name = name
         self.budgetBalance = budget
-        self.currentBalance = budget
+        self.currentBalance = balance
         self.transactions = []
         self.periodicity = periodicity
     }
     
     enum Periodicity: Codable, Hashable {
-        
         case daily
         case weekly
         case monthly
@@ -35,9 +34,9 @@ import SwiftData
         case never
         
         struct CustomPeriodicity: Codable, Hashable {
-            var days: Int
-            var months: Int
-            var years: Int
+            var days: Int = 0
+            var months: Int = 0
+            var years: Int = 0
         }
     }
 }

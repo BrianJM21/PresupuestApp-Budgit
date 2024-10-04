@@ -12,6 +12,7 @@ struct AddAccountView: View {
     @State private var name: String = ""
     @State private var balance: String = ""
     @Binding var isViewPresented: Bool
+    @State private var isInvalidBalance: Bool = false
     
     var body: some View {
         HStack {
@@ -31,12 +32,22 @@ struct AddAccountView: View {
             LabeledContent("Balance:") {
                 TextField("Enter current account balance", text: $balance)
                     .multilineTextAlignment(.trailing)
-                    .keyboardType(.decimalPad)
+                    .keyboardType(.numbersAndPunctuation)
             }
             Button("Add account") {
-                isViewPresented = false
+                if let balance = Double(balance) {
+                    let newAccount = Account(name: name, balance: balance)
+                    isViewPresented = false
+                } else {
+                    isInvalidBalance = true
+                }
             }
             .frame(maxWidth: .infinity, alignment: .center)
+            .alert("Invalid account balance", isPresented: $isInvalidBalance) {
+                Button("OK", role: .cancel) {
+                    isInvalidBalance = false
+                }
+            }
         }
     }
 }
