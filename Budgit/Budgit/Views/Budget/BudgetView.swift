@@ -10,6 +10,7 @@ import SwiftData
 
 struct BudgetView: View {
     
+    @Environment(\.modelContext) var swiftDataContext
     @Query(sort: \Budget.name) var budgets: [Budget]
     
     @State private var selectedBudget: Budget?
@@ -19,11 +20,19 @@ struct BudgetView: View {
         
         if !budgets.isEmpty {
             Picker("Budgets", selection: $selectedBudget) {
+                if selectedBudget == nil {
+                    Text("No budget available").tag(nil as Budget?)
+                }
                 ForEach(budgets) { budget in
                     Text(budget.name).tag(budget as Budget?)
                 }
             }
             .pickerStyle(.automatic)
+            .onAppear {
+                if !budgets.isEmpty {
+                    selectedBudget = budgets.first!
+                }
+            }
             
             List {
                 ForEach(selectedBudget?.transactions ?? [], id: \Transaction.timeStamp) { transaction in
@@ -52,6 +61,7 @@ struct BudgetView: View {
 
         }
     }
+    
 }
 
 #Preview {

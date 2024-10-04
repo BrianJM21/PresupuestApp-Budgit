@@ -10,6 +10,7 @@ import SwiftData
 
 struct AccountView: View {
     
+    @Environment(\.modelContext) var swiftDataContext
     @Query(sort: \Account.name) var accounts: [Account]
     
     @State private var isAddAccountViewPresented: Bool = false
@@ -19,6 +20,11 @@ struct AccountView: View {
             List {
                 ForEach(accounts) { account in
                     LabeledContent(account.name, value: account.balance, format: .currency(code: "MXN"))
+                }
+                .onDelete { indexSet in
+                    for index in indexSet {
+                        swiftDataContext.delete(accounts[index])
+                    }
                 }
             }
         } else {
