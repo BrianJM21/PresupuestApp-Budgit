@@ -31,22 +31,30 @@ struct AccountView: View {
                     }
                 }
                 .navigationDestination(for: Account.self) { account in
-                    List {
-                        Section {
-                            ForEach(account.transactions.sorted { $0.date > $1.date }, id: \Transaction.timeStamp) { transaction in
-                                VStack(alignment: .leading) {
-                                    Text(transaction.date.formatted())
-                                        .font(.system(size: 10))
-                                    LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
-                                        .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .black)
-                                    Text(transaction.description ?? "")
-                                        .font(.system(size: 10))
+                    if account.transactions.isEmpty {
+                        ContentUnavailableView {
+                            Label("No transactions", systemImage: "pencil.and.list.clipboard")
+                        } description: {
+                            Text("There are no transactions for the selected account.")
+                        }
+                    } else {
+                        List {
+                            Section {
+                                ForEach(account.transactions.sorted { $0.date > $1.date }, id: \Transaction.timeStamp) { transaction in
+                                    VStack(alignment: .leading) {
+                                        Text(transaction.date.formatted())
+                                            .font(.system(size: 10))
+                                        LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
+                                            .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .black)
+                                        Text(transaction.description ?? "")
+                                            .font(.system(size: 10))
+                                    }
+                                    
                                 }
-                                
+                            } header: {
+                                Text(account.name)
+                                    .font(.system(size: 18, weight: .bold))
                             }
-                        } header: {
-                            Text(account.name)
-                                .font(.system(size: 18, weight: .bold))
                         }
                     }
                 }
