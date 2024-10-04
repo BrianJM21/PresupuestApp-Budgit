@@ -46,7 +46,7 @@ struct BudgetView: View {
                 }
             }
             .sheet(isPresented: $isAddBudgetViewPresented) {
-                AddBudgetView(isAddBudgetViewPresented: $isAddBudgetViewPresented)
+                AddBudgetView(isViewPresented: $isAddBudgetViewPresented)
             }
 
         }

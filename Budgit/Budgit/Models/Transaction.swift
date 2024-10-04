@@ -15,8 +15,8 @@ struct Transaction: Codable {
     var type: TransactionType
     
     enum TransactionType: String, Codable {
-        case income = "income"
-        case expense = "expense"
-        case transfer = "transfer"
+        case income
+        case expense
+        case transfer
     }
 }

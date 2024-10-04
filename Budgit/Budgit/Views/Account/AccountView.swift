@@ -31,7 +31,7 @@ struct AccountView: View {
                 }
             }
             .sheet(isPresented: $isAddAccountViewPresented) {
-                AddAccountView(isAddAccountViewPresented: $isAddAccountViewPresented)
+                AddAccountView(isViewPresented: $isAddAccountViewPresented)
             }
         }
     }

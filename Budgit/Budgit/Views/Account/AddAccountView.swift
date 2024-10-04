@@ -9,25 +9,25 @@ import SwiftUI
 
 struct AddAccountView: View {
     
-    @State private var accountName: String = ""
-    @State private var accountBalance: String = ""
-    @Binding var isAddAccountViewPresented: Bool
+    @State private var name: String = ""
+    @State private var balance: String = ""
+    @Binding var isViewPresented: Bool
     
     var body: some View {
         Form {
-            LabeledContent("Account name:") {
-                TextField("Enter account name", text: $accountName)
+            LabeledContent("Name:") {
+                TextField("Enter account name", text: $name)
             }
-            LabeledContent("Account balance:") {
-                TextField("Enter current account balance", text: $accountBalance)
+            LabeledContent("Balance:") {
+                TextField("Enter current account balance", text: $balance)
             }
             Button("Add account") {
-                isAddAccountViewPresented = false
+                isViewPresented = false
             }
         }
     }
 }
 
 #Preview {
-    AddAccountView(isAddAccountViewPresented: .constant(true))
+    AddAccountView(isViewPresented: .constant(true))
 }
