@@ -20,6 +20,7 @@ struct AddTransactionView: View {
     @State private var date: Date = .now
     @State private var type: Transaction.TransactionType = .expense
     @State private var selectedAccount: Account?
+    @State private var accountTransferDestination: Account?
     @State private var selectedBudget: Budget?
     @Binding var isViewPresented: Bool
     @State private var isInvalidAmount: Bool = false
@@ -42,7 +43,7 @@ struct AddTransactionView: View {
                 LabeledContent("Amount:") {
                     TextField("Enter transaction amount", text: $amount)
                         .multilineTextAlignment(.trailing)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                 }
                 DatePicker("Fecha:", selection: $date)
                 Picker("Transaction Type", selection: $type) {
@@ -50,26 +51,44 @@ struct AddTransactionView: View {
                     Text("Expense").tag(Transaction.TransactionType.expense)
                     Text("Transfer").tag(Transaction.TransactionType.transfer)
                 }
-                Picker("Accounts", selection: $selectedAccount) {
+                Picker("Account", selection: $selectedAccount) {
                     if selectedAccount == nil {
-                        Text("No account available").tag(nil as Account?)
+                        Text("No accounts available").tag(nil as Account?)
                     }
                     ForEach(accounts) { account in
                         Text(account.name).tag(account)
                     }
                 }
                 .pickerStyle(.automatic)
-                Picker("Budgets", selection: $selectedBudget) {
-                    if selectedBudget == nil {
-                        Text("No budget available").tag(nil as Budget?)
+                if type == .transfer {
+                    Picker("Destination Account", selection: $accountTransferDestination) {
+                        if accountTransferDestination == nil {
+                            Text("No accounts available").tag(nil as Account?)
+                        }
+                        ForEach(accounts) { account in
+                            if account.name != selectedAccount?.name {
+                                Text(account.name).tag(account)
+                            }
+                        }
                     }
-                    ForEach(budgets) { budget in
-                        Text(budget.name).tag(budget)
+                    
+                } else {
+                    Picker("Budget", selection: $selectedBudget) {
+                        if selectedBudget == nil {
+                            Text("No budgets available").tag(nil as Budget?)
+                        }
+                        ForEach(budgets) { budget in
+                            Text(budget.name).tag(budget)
+                        }
                     }
+                    
                 }
-                .pickerStyle(.automatic)
                 Button("Add Transaction") {
-                    if selectedAccount == nil, selectedBudget == nil {
+                    if type == .transfer, accountTransferDestination == nil {
+                        isInvalidAccountBudget = true
+                        return
+                    }
+                    if selectedAccount == nil || selectedBudget == nil {
                         isInvalidAccountBudget = true
                         return
                     }
@@ -79,7 +98,24 @@ struct AddTransactionView: View {
                     }
                     if let amount = Double(amount), amount > 0 {
                         let newTransaction = Transaction(tile: title, description: description, amount: amount, date: date, type: type)
-                        
+                        switch type {
+                        case .income:
+                            selectedAccount?.balance += amount
+                            selectedAccount?.transactions.append(newTransaction)
+                            selectedBudget?.currentBalance += amount
+                            selectedBudget?.transactions.append(newTransaction)
+                        case .expense:
+                            selectedAccount?.balance -= amount
+                            selectedAccount?.transactions.append(newTransaction)
+                            selectedBudget?.currentBalance -= amount
+                            selectedBudget?.transactions.append(newTransaction)
+                        case .transfer:
+                            selectedAccount?.balance -= amount
+                            selectedAccount?.transactions.append(newTransaction)
+                            accountTransferDestination?.balance += amount
+                            accountTransferDestination?.transactions.append(newTransaction)
+                        }
+                        selectedBudget?.currentBalance -= amount
                         isViewPresented = false
                     } else {
                         isInvalidAmount = true
@@ -116,6 +152,9 @@ struct AddTransactionView: View {
             }
             if !budgets.isEmpty {
                 selectedBudget = budgets.first!
+            }
+            if accounts.count > 1 {
+                accountTransferDestination = accounts.last!
             }
         }
     }

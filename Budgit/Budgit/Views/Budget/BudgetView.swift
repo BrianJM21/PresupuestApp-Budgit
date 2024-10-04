@@ -21,7 +21,7 @@ struct BudgetView: View {
         if !budgets.isEmpty {
             Picker("Budgets", selection: $selectedBudget) {
                 if selectedBudget == nil {
-                    Text("No budget available").tag(nil as Budget?)
+                    Text("No budgets available").tag(nil as Budget?)
                 }
                 ForEach(budgets) { budget in
                     Text(budget.name).tag(budget as Budget?)
@@ -34,14 +34,22 @@ struct BudgetView: View {
                 }
             }
             
-            List {
-                ForEach(selectedBudget?.transactions ?? [], id: \Transaction.timeStamp) { transaction in
-                    VStack(alignment: .leading) {
-                        Text(transaction.date.formatted())
-                            .font(.system(size: 10))
-                        LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
-                        Text(transaction.description ?? "")
-                            .font(.system(size: 10))
+            if let selectedBudget, selectedBudget.transactions.isEmpty {
+                ContentUnavailableView {
+                    Label("No transactions", systemImage: "pencil.and.list.clipboard")
+                } description: {
+                    Text("There are no transactions for the selected budget.")
+                }
+            } else {
+                List {
+                    ForEach(selectedBudget?.transactions ?? [], id: \Transaction.timeStamp) { transaction in
+                        VStack(alignment: .leading) {
+                            Text(transaction.date.formatted())
+                                .font(.system(size: 10))
+                            LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
+                            Text(transaction.description ?? "")
+                                .font(.system(size: 10))
+                        }
                     }
                 }
             }
