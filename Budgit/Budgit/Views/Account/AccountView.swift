@@ -17,13 +17,37 @@ struct AccountView: View {
     
     var body: some View {
         if !accounts.isEmpty {
-            List {
-                ForEach(accounts) { account in
-                    LabeledContent(account.name, value: account.balance, format: .currency(code: "MXN"))
+            NavigationStack {
+                List {
+                    ForEach(accounts.sorted { $0.name < $1.name }) { account in
+                        NavigationLink(value: account) {
+                            LabeledContent(account.name, value: account.balance, format: .currency(code: "MXN"))
+                        }
+                    }
+                    .onDelete { indexSet in
+                        for index in indexSet {
+                            swiftDataContext.delete(accounts[index])
+                        }
+                    }
                 }
-                .onDelete { indexSet in
-                    for index in indexSet {
-                        swiftDataContext.delete(accounts[index])
+                .navigationDestination(for: Account.self) { account in
+                    List {
+                        Section {
+                            ForEach(account.transactions.sorted { $0.date > $1.date }, id: \Transaction.timeStamp) { transaction in
+                                VStack(alignment: .leading) {
+                                    Text(transaction.date.formatted())
+                                        .font(.system(size: 10))
+                                    LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
+                                        .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .black)
+                                    Text(transaction.description ?? "")
+                                        .font(.system(size: 10))
+                                }
+                                
+                            }
+                        } header: {
+                            Text(account.name)
+                                .font(.system(size: 18, weight: .bold))
+                        }
                     }
                 }
             }
