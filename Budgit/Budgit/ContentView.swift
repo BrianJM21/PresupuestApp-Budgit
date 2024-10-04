@@ -10,6 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var selectedView = 0
+    @State private var isConfirmationDialogPresented: Bool = false
+    @State private var isAddAccountViewPresented: Bool = false
+    @State private var isAddBudgetViewPresented: Bool = false
+    @State private var isAddTransactionViewPresented: Bool = false
     
     var body: some View {
         
@@ -25,9 +29,29 @@ struct ContentView: View {
                     .frame(width: 30, height: 30)
                     .foregroundStyle(.white)
                 Button("", systemImage: "plus.circle.fill") {
-                    print("add action button")
+                    isConfirmationDialogPresented = true
                 }
                 .font(.system(size: 50))
+                .confirmationDialog("What do you want to add?", isPresented: $isConfirmationDialogPresented) {
+                    Button("Transaction") {
+                        isAddTransactionViewPresented = true
+                    }
+                    Button("Account") {
+                        isAddAccountViewPresented = true
+                    }
+                    Button("Budget") {
+                        isAddBudgetViewPresented = true
+                    }
+                }
+                .sheet(isPresented: $isAddTransactionViewPresented) {
+                    AddTransactionView(isViewPresented: $isAddTransactionViewPresented)
+                }
+                .sheet(isPresented: $isAddAccountViewPresented) {
+                    AddAccountView(isViewPresented: $isAddAccountViewPresented)
+                }
+                .sheet(isPresented: $isAddBudgetViewPresented) {
+                    AddBudgetView(isViewPresented: $isAddBudgetViewPresented)
+                }
             }
         }
         

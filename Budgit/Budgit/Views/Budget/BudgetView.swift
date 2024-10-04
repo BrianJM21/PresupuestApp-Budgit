@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BudgetView: View {
     
-    var budgets: [Budget] = []
+    @Query(sort: \Budget.name) var budgets: [Budget]
     
     @State private var selectedBudget: Budget?
     @State private var isAddBudgetViewPresented: Bool = false
@@ -54,15 +55,5 @@ struct BudgetView: View {
 }
 
 #Preview {
-    let semanal = {
-        var s = Budget(name: "Gasto Semanal", budget: 800, balance: 2000, periodicity: .weekly)
-        s.transactions = [Transaction(tile: "gasto A", amount: 100, date: .now, type: .expense), Transaction(tile: "gasto B", amount: 200, date: .now, type: .expense)]
-        return s
-    }()
-    let mensual = {
-        var s = Budget(name: "Gasto Mensual", budget: 1200, balance: 3000, periodicity: .monthly)
-        s.transactions = [Transaction(tile: "gasto A", amount: 300, date: .now, type: .income), Transaction(tile: "gasto B", amount: 400, date: .now, type: .transfer)]
-        return s
-    }()
-    BudgetView(budgets: [semanal, mensual])
+    BudgetView()
 }

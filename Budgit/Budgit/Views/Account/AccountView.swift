@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AccountView: View {
     
-    var accounts: [Account] = []
+    @Query(sort: \Account.name) var accounts: [Account]
     
     @State private var isAddAccountViewPresented: Bool = false
     
@@ -39,5 +40,5 @@ struct AccountView: View {
 }
 
 #Preview {
-    AccountView(accounts: [Account(name: "Efectivo", balance: 200)])
+    AccountView()
 }
