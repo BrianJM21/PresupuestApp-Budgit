@@ -14,16 +14,29 @@ struct AddAccountView: View {
     @Binding var isViewPresented: Bool
     
     var body: some View {
+        HStack {
+            Text("Add Account")
+                .font(.system(size: 20, weight: .bold))
+            Button("Cancel") {
+                isViewPresented = false
+            }
+        }
+        .padding()
+        
         Form {
             LabeledContent("Name:") {
                 TextField("Enter account name", text: $name)
+                    .multilineTextAlignment(.trailing)
             }
             LabeledContent("Balance:") {
                 TextField("Enter current account balance", text: $balance)
+                    .multilineTextAlignment(.trailing)
+                    .keyboardType(.decimalPad)
             }
             Button("Add account") {
                 isViewPresented = false
             }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
     }
 }

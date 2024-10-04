@@ -19,15 +19,27 @@ struct AddBudgetView: View {
     @Binding var isViewPresented: Bool
     
     var body: some View {
+        HStack {
+            Text("Add Budget")
+                .font(.system(size: 20, weight: .bold))
+            Button("Cancel") {
+                isViewPresented = false
+            }
+        }
+        .padding()
+        
         Form {
             LabeledContent("Name:") {
                 TextField("Enter budget name", text: $name)
+                    .multilineTextAlignment(.trailing)
             }
             LabeledContent("Balance:") {
                 TextField("Enter total budget balance", text: $balance)
+                    .multilineTextAlignment(.trailing)
             }
             LabeledContent("Current Balance:") {
                 TextField("Enter current budget balance", text: $currentBalance)
+                    .multilineTextAlignment(.trailing)
             }
             Picker("Periodicity", selection: $periodicity) {
                 Text("Never").tag(Budget.Periodicity.never)
@@ -51,6 +63,7 @@ struct AddBudgetView: View {
             Button("Add budget") {
                 isViewPresented = false
             }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
     }
 }

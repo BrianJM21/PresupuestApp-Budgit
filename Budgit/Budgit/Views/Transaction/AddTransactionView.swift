@@ -16,6 +16,15 @@ struct AddTransactionView: View {
     @Binding var isViewPresented: Bool
     
     var body: some View {
+        HStack {
+            Text("Add Transaction")
+                .font(.system(size: 20, weight: .bold))
+            Button("Cancel") {
+                isViewPresented = false
+            }
+        }
+        .padding()
+        
         Form {
             LabeledContent("Title:") {
                 TextField("Enter transaction title", text: $title)
