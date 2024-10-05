@@ -15,6 +15,11 @@ import SwiftData
     var currentBalance: Double
     var transactions: [Transaction]
     var periodicity: Periodicity
+    var startDate: Date?
+    var endDate: Date?
+    var isFinite: Bool = false
+    var finishDate: Date?
+    var isCumulative: Bool = false
     
     init(name: String, budget: Double, balance: Double, periodicity: Periodicity) {
         self.timeStamp = Date()
@@ -30,13 +35,7 @@ import SwiftData
         case weekly
         case monthly
         case yearly
-        case custom(CustomPeriodicity)
+        case custom
         case never
-        
-        struct CustomPeriodicity: Codable, Hashable {
-            var days: Int = 0
-            var months: Int = 0
-            var years: Int = 0
-        }
     }
 }

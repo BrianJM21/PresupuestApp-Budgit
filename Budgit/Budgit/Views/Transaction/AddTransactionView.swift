@@ -28,9 +28,20 @@ struct AddTransactionView: View {
     @State private var isInvalidAccountBudget: Bool = false
     
     var body: some View {
-        NavigationStack {
-            Text("Add Transaction")
-                .font(.system(size: 20, weight: .bold))
+        Group {
+            HStack {
+                Spacer()
+                    .frame(maxWidth: .infinity)
+                Text("Add Transaction")
+                    .font(.system(size: 20, weight: .bold))
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                Button("Cancel") {
+                    isViewPresented = false
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .padding()
             Form {
                 LabeledContent("Title:") {
                     TextField("Enter transaction title", text: $title)
@@ -45,7 +56,7 @@ struct AddTransactionView: View {
                         .multilineTextAlignment(.trailing)
                         .keyboardType(.decimalPad)
                 }
-                DatePicker("Fecha:", selection: $date)
+                DatePicker("Date:", selection: $date)
                 Picker("Transaction Type", selection: $type) {
                     Text("Income").tag(Transaction.TransactionType.income)
                     Text("Expense").tag(Transaction.TransactionType.expense)
@@ -102,20 +113,31 @@ struct AddTransactionView: View {
                         case .income:
                             selectedAccount?.balance += amount
                             selectedAccount?.transactions.append(newTransaction)
-                            selectedBudget?.currentBalance += amount
                             selectedBudget?.transactions.append(newTransaction)
+                            if let startDate = selectedBudget?.startDate, let endDate = selectedBudget?.endDate {
+                                if (startDate...endDate).contains(date) {
+                                    selectedBudget?.currentBalance += amount
+                                }
+                            } else {
+                                selectedBudget?.currentBalance += amount
+                            }
                         case .expense:
                             selectedAccount?.balance -= amount
                             selectedAccount?.transactions.append(newTransaction)
-                            selectedBudget?.currentBalance -= amount
                             selectedBudget?.transactions.append(newTransaction)
+                            if let startDate = selectedBudget?.startDate, let endDate = selectedBudget?.endDate {
+                                if (startDate...endDate).contains(date) {
+                                    selectedBudget?.currentBalance -= amount
+                                }
+                            } else {
+                                selectedBudget?.currentBalance -= amount
+                            }
                         case .transfer:
                             selectedAccount?.balance -= amount
                             selectedAccount?.transactions.append(newTransaction)
                             accountTransferDestination?.balance += amount
                             accountTransferDestination?.transactions.append(newTransaction)
                         }
-                        selectedBudget?.currentBalance -= amount
                         isViewPresented = false
                     } else {
                         isInvalidAmount = true
@@ -135,13 +157,6 @@ struct AddTransactionView: View {
                 .alert("Invalid account/budget", isPresented: $isInvalidAccountBudget) {
                     Button("OK", role: .cancel) {
                         isInvalidAccountBudget = false
-                    }
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button("Cancel") {
-                        isViewPresented = false
                     }
                 }
             }
