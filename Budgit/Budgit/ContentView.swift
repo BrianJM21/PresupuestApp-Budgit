@@ -26,12 +26,15 @@ struct ContentView: View {
         .overlay(alignment: .center) {
             ZStack {
                 Circle()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 50, height: 50)
                     .foregroundStyle(.white)
-                Button("", systemImage: "plus.circle.fill") {
-                    isConfirmationDialogPresented = true
-                }
-                .font(.system(size: 50))
+                Image(systemName: "plus.circle.fill")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundStyle(.blue)
+                    .onTapGesture {
+                        isConfirmationDialogPresented = true
+                    }
                 .confirmationDialog("What do you want to add?", isPresented: $isConfirmationDialogPresented) {
                     Button("Transaction") {
                         isAddTransactionViewPresented = true
