@@ -28,13 +28,13 @@ struct ContentView: View {
                 Circle()
                     .frame(width: 50, height: 50)
                     .foregroundStyle(.white)
-                Image(systemName: "plus.circle.fill")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .foregroundStyle(.blue)
-                    .onTapGesture {
-                        isConfirmationDialogPresented = true
-                    }
+                Button {
+                    isConfirmationDialogPresented = true
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                }
                 .confirmationDialog("What do you want to add?", isPresented: $isConfirmationDialogPresented) {
                     Button("Transaction") {
                         isAddTransactionViewPresented = true
