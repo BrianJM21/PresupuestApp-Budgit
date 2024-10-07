@@ -14,6 +14,8 @@ struct Transaction: Codable {
     var amount: Double
     var date: Date
     var type: TransactionType
+    var accountName: String
+    var budgetName: String
     
     enum TransactionType: String, Codable {
         case income

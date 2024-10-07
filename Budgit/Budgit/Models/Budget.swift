@@ -15,6 +15,7 @@ import SwiftData
     var currentBalance: Double
     var transactions: [Transaction]
     var periodicity: Periodicity
+    var historyStartDate: Date?
     var startDate: Date?
     var endDate: Date?
     var isFinite: Bool = false

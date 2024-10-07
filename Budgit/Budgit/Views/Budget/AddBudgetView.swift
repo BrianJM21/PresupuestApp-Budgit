@@ -44,8 +44,8 @@ struct AddBudgetView: View {
                 TextField("Enter budget name", text: $name)
                     .multilineTextAlignment(.trailing)
             }
-            LabeledContent("Balance:") {
-                TextField("Enter total budget balance", text: $balance)
+            LabeledContent("Amount:") {
+                TextField("Enter total budget amount", text: $balance)
                     .multilineTextAlignment(.trailing)
                     .keyboardType(.numbersAndPunctuation)
             }
@@ -98,7 +98,7 @@ struct AddBudgetView: View {
                         }
                     case .yearly:
                         newBudget.startDate = startDate
-                        if let baseDate = Calendar.current.date(byAdding: .year, value: 1, to: startDate) {
+                        if let baseDate = Calendar.current.date(byAdding: .yearForWeekOfYear, value: 1, to: startDate) {
                             newBudget.endDate = Calendar.current.date(byAdding: .day, value: -1, to: baseDate)
                         }
                     case .custom:
@@ -108,6 +108,7 @@ struct AddBudgetView: View {
                         break
                     }
                     if newBudget.periodicity != .never {
+                        newBudget.historyStartDate = startDate
                         newBudget.isFinite = isFinite
                         if isFinite {
                             newBudget.finishDate = finishDate
@@ -115,7 +116,7 @@ struct AddBudgetView: View {
                         newBudget.isCumulative = isCumulative
                     }
                     if currentBalance != balance {
-                        var adjustment = Transaction(tile: "Initial adjustment", amount: 0, date: .now, type: .expense)
+                        var adjustment = Transaction(tile: "Initial adjustment", amount: 0, date: startDate, type: .expense, accountName: "", budgetName: name)
                         if currentBalance < 0 {
                             adjustment.amount = balance + abs(currentBalance)
                         } else if currentBalance > balance {

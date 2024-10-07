@@ -3,12 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>UILaunchScreen</key>
-	<dict>
-		<key>UILaunchScreen</key>
-		<dict>
-			<key>UIImageName</key>
-			<string>Budgit</string>
-		</dict>
-	</dict>
+	<dict/>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen.storyboard</string>
 </dict>
 </plist>

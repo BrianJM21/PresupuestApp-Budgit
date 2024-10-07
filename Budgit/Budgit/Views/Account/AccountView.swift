@@ -42,8 +42,13 @@ struct AccountView: View {
                             Section {
                                 ForEach(account.transactions.sorted { $0.date > $1.date }, id: \Transaction.timeStamp) { transaction in
                                     VStack(alignment: .leading) {
-                                        Text(transaction.date.formatted())
-                                            .font(.system(size: 10))
+                                        HStack {
+                                            Text(transaction.date.formatted())
+                                                .font(.system(size: 10))
+                                            Spacer()
+                                            Text(transaction.budgetName)
+                                                .font(.system(size: 10))
+                                        }
                                         LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
                                             .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .black)
                                         Text(transaction.description ?? "")

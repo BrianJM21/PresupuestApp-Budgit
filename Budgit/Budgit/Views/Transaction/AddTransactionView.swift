@@ -51,16 +51,15 @@ struct AddTransactionView: View {
                     TextField("Enter transaction description", text: $description)
                         .multilineTextAlignment(.trailing)
                 }
-                LabeledContent("Amount:") {
-                    TextField("Enter transaction amount", text: $amount)
-                        .multilineTextAlignment(.trailing)
-                        .keyboardType(.decimalPad)
-                }
-                DatePicker("Date:", selection: $date)
                 Picker("Transaction Type", selection: $type) {
                     Text("Income").tag(Transaction.TransactionType.income)
                     Text("Expense").tag(Transaction.TransactionType.expense)
                     Text("Transfer").tag(Transaction.TransactionType.transfer)
+                }
+                LabeledContent("Amount:") {
+                    TextField("Enter transaction amount", text: $amount)
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.decimalPad)
                 }
                 Picker("Account", selection: $selectedAccount) {
                     if selectedAccount == nil {
@@ -70,7 +69,6 @@ struct AddTransactionView: View {
                         Text(account.name).tag(account)
                     }
                 }
-                .pickerStyle(.automatic)
                 if type == .transfer {
                     Picker("Destination Account", selection: $accountTransferDestination) {
                         if accountTransferDestination == nil {
@@ -94,6 +92,15 @@ struct AddTransactionView: View {
                     }
                     
                 }
+                if let historyStartDate = selectedBudget?.historyStartDate, let endDate = selectedBudget?.endDate {
+                    let absoluteHistoryStartDate = Calendar.current.startOfDay(for: historyStartDate)
+                    let absoluteEndDate = Calendar.current.date(byAdding: .second, value: -1, to:
+                                                                    Calendar.current.startOfDay(for:
+                                                                                                    Calendar.current.date(byAdding: .day, value: 1, to: endDate)!))
+                    DatePicker("Date:", selection: $date, in: absoluteHistoryStartDate...endDate, displayedComponents: .date)
+                } else {
+                    DatePicker("Date:", selection: $date, displayedComponents: .date)
+                }
                 Button("Add Transaction") {
                     if type == .transfer, accountTransferDestination == nil {
                         isInvalidAccountBudget = true
@@ -108,14 +115,18 @@ struct AddTransactionView: View {
                         return
                     }
                     if let amount = Double(amount), amount > 0 {
-                        let newTransaction = Transaction(tile: title, description: description, amount: amount, date: date, type: type)
+                        let newTransaction = Transaction(tile: title, description: description, amount: amount, date: date, type: type, accountName: selectedAccount?.name ?? "NA", budgetName: selectedBudget?.name ?? "NA")
                         switch type {
                         case .income:
                             selectedAccount?.balance += amount
                             selectedAccount?.transactions.append(newTransaction)
                             selectedBudget?.transactions.append(newTransaction)
-                            if let startDate = selectedBudget?.startDate, let endDate = selectedBudget?.endDate {
-                                if (startDate...endDate).contains(date) {
+                            if let startDate = selectedBudget?.startDate, let endDate = selectedBudget?.endDate, let isCumulative = selectedBudget?.isCumulative {
+                                let absoluteStartDate = Calendar.current.startOfDay(for: startDate)
+                                let absoluteEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+                                if isCumulative {
+                                    selectedBudget?.currentBalance += amount
+                                } else if (absoluteStartDate...absoluteEndDate).contains(date) {
                                     selectedBudget?.currentBalance += amount
                                 }
                             } else {
@@ -125,8 +136,12 @@ struct AddTransactionView: View {
                             selectedAccount?.balance -= amount
                             selectedAccount?.transactions.append(newTransaction)
                             selectedBudget?.transactions.append(newTransaction)
-                            if let startDate = selectedBudget?.startDate, let endDate = selectedBudget?.endDate {
-                                if (startDate...endDate).contains(date) {
+                            if let startDate = selectedBudget?.startDate, let endDate = selectedBudget?.endDate, let isCumulative = selectedBudget?.isCumulative {
+                                let absoluteStartDate = Calendar.current.startOfDay(for: startDate)
+                                let absoluteEndDate = Calendar.current.startOfDay(for: Calendar.current.date(byAdding: .day, value: 1, to: endDate)!)
+                                if isCumulative {
+                                    selectedBudget?.currentBalance -= amount
+                                } else if (absoluteStartDate...absoluteEndDate).contains(date) {
                                     selectedBudget?.currentBalance -= amount
                                 }
                             } else {
