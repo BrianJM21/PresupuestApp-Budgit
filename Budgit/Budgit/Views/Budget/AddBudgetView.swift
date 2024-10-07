@@ -98,7 +98,7 @@ struct AddBudgetView: View {
                         }
                     case .yearly:
                         newBudget.startDate = startDate
-                        if let baseDate = Calendar.current.date(byAdding: .yearForWeekOfYear, value: 1, to: startDate) {
+                        if let baseDate = Calendar.current.date(byAdding: .year, value: 1, to: startDate) {
                             newBudget.endDate = Calendar.current.date(byAdding: .day, value: -1, to: baseDate)
                         }
                     case .custom:

@@ -20,6 +20,7 @@ import SwiftData
     var endDate: Date?
     var isFinite: Bool = false
     var finishDate: Date?
+    var isFinished: Bool = false
     var isCumulative: Bool = false
     
     init(name: String, budget: Double, balance: Double, periodicity: Periodicity) {
@@ -31,12 +32,12 @@ import SwiftData
         self.periodicity = periodicity
     }
     
-    enum Periodicity: Codable, Hashable {
-        case daily
-        case weekly
-        case monthly
-        case yearly
-        case custom
-        case never
+    enum Periodicity: String, Codable, Hashable {
+        case daily = "daily"
+        case weekly = "weekly"
+        case monthly = "monthly"
+        case yearly = "yearly"
+        case custom = "custom"
+        case never = "never"
     }
 }

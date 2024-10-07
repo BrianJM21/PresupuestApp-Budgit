@@ -27,7 +27,6 @@ struct BudgetView: View {
                     Text(budget.name).tag(budget as Budget?)
                 }
             }
-            .pickerStyle(.automatic)
             .onAppear {
                 if !budgets.isEmpty {
                     selectedBudget = budgets.first!
@@ -39,34 +38,48 @@ struct BudgetView: View {
             
             if let selectedBudget {
                 VStack(spacing: 5) {
-                    HStack {
-                        Text("Budget: \(selectedBudget.budgetBalance.formatted(.currency(code: "MXN")))")
-                        Spacer()
+                    Label(selectedBudget.periodicity.rawValue, systemImage: "clock.arrow.trianglehead.counterclockwise.rotate.90")
+                        .font(.system(size: 12))
+                    if let startDate = selectedBudget.startDate, let endDate = selectedBudget.endDate, let historyStartDate = selectedBudget.historyStartDate {
+                        if startDate == endDate {
+                            Text("\(selectedBudget.isFinished ? "last" : "for") period: \(startDate.formatted(date: .abbreviated, time: .omitted))")
+                        } else {
+                            Text("\(selectedBudget.isFinished ? "last" : "for") period: \(startDate.formatted(date: .abbreviated, time: .omitted)) - \(endDate.formatted(date: .abbreviated, time: .omitted))")
+                        }
                         Text("Balance: \(selectedBudget.currentBalance.formatted(.currency(code: "MXN")))")
                             .foregroundStyle(selectedBudget.currentBalance >= 0 ? Color.primary : .red)
-                    }
-                    if let startDate = selectedBudget.startDate, let endDate = selectedBudget.endDate {
                         HStack {
-                            if let finishDate = selectedBudget.finishDate, finishDate < .now {
-                                Label("Finished", systemImage: "checkmark.circle.fill")
+                            Label("started on: \(historyStartDate.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar")
+                            Spacer()
+                            Label("budget: \(selectedBudget.budgetBalance.formatted(.currency(code: "MXN")))", systemImage: "dollarsign.gauge.chart.lefthalf.righthalf")
+                        }
+                        .font(.system(size: 12))
+                        HStack {
+                            if let finishDate = selectedBudget.finishDate {
+                                if selectedBudget.isFinished {
+                                    Label("ended on: \(finishDate.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar.badge.checkmark")
+                                } else {
+                                    Label("will end on: \(finishDate.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar.badge.clock")
+                                }
                             }
                             Spacer()
                             if selectedBudget.isCumulative {
-                                Label("Is cumulative", systemImage: "arrow.trianglehead.counterclockwise")
+                                Label("is cumulative", systemImage: "arrow.trianglehead.counterclockwise")
                             }
                         }
-                        if startDate == endDate {
-                            Text("for: \(startDate.formatted(date: .abbreviated, time: .omitted))")
-                        } else {
-                            HStack {
-                                Text("from: \(startDate.formatted(date: .abbreviated, time: .omitted))")
-                                Spacer()
-                                Text("to: \(endDate.formatted(date: .abbreviated, time: .omitted))")
-                            }
+                        .font(.system(size: 12))
+                    } else {
+                        Text("Balance: \(selectedBudget.currentBalance.formatted(.currency(code: "MXN")))")
+                            .foregroundStyle(selectedBudget.currentBalance >= 0 ? Color.primary : .red)
+                        HStack {
+                            Label("created on: \(selectedBudget.timeStamp.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar.badge.plus")
+                            Spacer()
+                            Label("budget: \(selectedBudget.budgetBalance.formatted(.currency(code: "MXN")))", systemImage: "dollarsign.gauge.chart.lefthalf.righthalf")
                         }
+                        .font(.system(size: 12))
                     }
                 }
-                .padding()
+                .padding(EdgeInsets(top: 7, leading: 15, bottom: 7, trailing: 15))
                 if selectedBudget.transactions.isEmpty {
                     ContentUnavailableView {
                         Label("No transactions", systemImage: "pencil.and.list.clipboard")
@@ -78,7 +91,7 @@ struct BudgetView: View {
                         ForEach(selectedBudget.transactions.sorted { $0.date > $1.date }, id: \Transaction.timeStamp) { transaction in
                             VStack(alignment: .leading) {
                                 HStack {
-                                    Text(transaction.date.formatted())
+                                    Text(transaction.date.formatted(date: .abbreviated, time: .omitted) )
                                         .font(.system(size: 10))
                                     Spacer()
                                     Text(transaction.accountName)
@@ -111,7 +124,9 @@ struct BudgetView: View {
     }
     
     private func updateDatesForSelectedBudget() {
-        guard let startDate = selectedBudget?.startDate,
+        guard let isFinihed = selectedBudget?.isFinished,
+              !isFinihed,
+              let startDate = selectedBudget?.startDate,
               let endDate = selectedBudget?.endDate,
               let isFinite = selectedBudget?.isFinite,
               let isCumulative = selectedBudget?.isCumulative,
@@ -131,7 +146,7 @@ struct BudgetView: View {
         let customTimeDifference = Calendar.current.dateComponents([.day, .month, .year], from: newStartDate, to: newEndDate)
         var dateRange = newStartDate...newEndDate
         while(!dateRange.contains(Date.now)) {
-            if let finishDate, dateRange.contains(finishDate) { break }
+            if let finishDate, dateRange.contains(finishDate) { selectedBudget?.isFinished = true; break }
             newStartDate = newEndDate
             switch periodicity {
             case .daily:
@@ -141,7 +156,7 @@ struct BudgetView: View {
             case .monthly:
                 newEndDate = Calendar.current.date(byAdding: .month, value: 1, to: newStartDate)!
             case .yearly:
-                newEndDate = Calendar.current.date(byAdding: .yearForWeekOfYear, value: 1, to: newStartDate)!
+                newEndDate = Calendar.current.date(byAdding: .year, value: 1, to: newStartDate)!
             case .custom:
                 newEndDate = Calendar.current.date(byAdding: customTimeDifference, to: newStartDate)!
             default:
