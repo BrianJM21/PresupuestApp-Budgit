@@ -90,14 +90,17 @@ struct AddTransactionView: View {
                             Text(budget.name).tag(budget)
                         }
                     }
-                    
+                    .onChange(of: selectedBudget) { _, _ in
+                        if let endDate = selectedBudget?.endDate, date > endDate {
+                            date = endDate
+                        } else if let historyStartDate = selectedBudget?.historyStartDate, date < historyStartDate {
+                            date = historyStartDate
+                        }
+                        print(date)
+                    }
                 }
                 if let historyStartDate = selectedBudget?.historyStartDate, let endDate = selectedBudget?.endDate {
-                    let absoluteHistoryStartDate = Calendar.current.startOfDay(for: historyStartDate)
-                    let absoluteEndDate = Calendar.current.date(byAdding: .second, value: -1, to:
-                                                                    Calendar.current.startOfDay(for:
-                                                                                                    Calendar.current.date(byAdding: .day, value: 1, to: endDate)!))
-                    DatePicker("Date:", selection: $date, in: absoluteHistoryStartDate...endDate, displayedComponents: .date)
+                    DatePicker("Date:", selection: $date, in: historyStartDate...endDate, displayedComponents: .date)
                 } else {
                     DatePicker("Date:", selection: $date, displayedComponents: .date)
                 }
