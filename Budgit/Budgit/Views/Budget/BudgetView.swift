@@ -46,12 +46,12 @@ struct BudgetView: View {
                         } else {
                             Text("\(selectedBudget.isFinished ? "last" : "for") period: \(startDate.formatted(date: .abbreviated, time: .omitted)) - \(endDate.formatted(date: .abbreviated, time: .omitted))")
                         }
-                        Text("Balance: \(selectedBudget.currentBalance.formatted(.currency(code: "MXN")))")
+                        Text("Balance: \(selectedBudget.currentBalance.formatted(.currency(code: EnvironmentVariable.currencyCode)))")
                             .foregroundStyle(selectedBudget.currentBalance >= 0 ? Color.primary : .red)
                         HStack {
                             Label("started on: \(historyStartDate.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar")
                             Spacer()
-                            Label("budget: \(selectedBudget.budgetBalance.formatted(.currency(code: "MXN")))", systemImage: "dollarsign.gauge.chart.lefthalf.righthalf")
+                            Label("budget: \(selectedBudget.budgetBalance.formatted(.currency(code: EnvironmentVariable.currencyCode)))", systemImage: "dollarsign.gauge.chart.lefthalf.righthalf")
                         }
                         .font(.system(size: 12))
                         HStack {
@@ -69,12 +69,12 @@ struct BudgetView: View {
                         }
                         .font(.system(size: 12))
                     } else {
-                        Text("Balance: \(selectedBudget.currentBalance.formatted(.currency(code: "MXN")))")
+                        Text("Balance: \(selectedBudget.currentBalance.formatted(.currency(code: EnvironmentVariable.currencyCode)))")
                             .foregroundStyle(selectedBudget.currentBalance >= 0 ? Color.primary : .red)
                         HStack {
                             Label("created on: \(selectedBudget.timeStamp.formatted(date: .abbreviated, time: .omitted))", systemImage: "calendar.badge.plus")
                             Spacer()
-                            Label("budget: \(selectedBudget.budgetBalance.formatted(.currency(code: "MXN")))", systemImage: "dollarsign.gauge.chart.lefthalf.righthalf")
+                            Label("budget: \(selectedBudget.budgetBalance.formatted(.currency(code: EnvironmentVariable.currencyCode)))", systemImage: "dollarsign.gauge.chart.lefthalf.righthalf")
                         }
                         .font(.system(size: 12))
                     }
@@ -97,7 +97,7 @@ struct BudgetView: View {
                                     Text(transaction.accountName)
                                         .font(.system(size: 10))
                                 }
-                                LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
+                                LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: EnvironmentVariable.currencyCode))
                                     .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .black)
                                 Text(transaction.description ?? "")
                                     .font(.system(size: 10))

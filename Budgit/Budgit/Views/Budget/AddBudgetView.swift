@@ -118,12 +118,12 @@ struct AddBudgetView: View {
                     if currentBalance != balance {
                         var adjustment = Transaction(tile: "Initial adjustment", amount: 0, date: startDate, type: .expense, accountName: "", budgetName: name)
                         if currentBalance < 0 {
-                            adjustment.amount = balance + abs(currentBalance)
+                            adjustment.amount = -(balance + abs(currentBalance))
                         } else if currentBalance > balance {
                             adjustment.amount = currentBalance - balance
                             adjustment.type = .income
                         } else {
-                            adjustment.amount = balance - currentBalance
+                            adjustment.amount = -(balance - currentBalance)
                         }
                         newBudget.transactions.append(adjustment)
                     }

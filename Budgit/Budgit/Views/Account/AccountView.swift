@@ -21,7 +21,7 @@ struct AccountView: View {
                 List {
                     ForEach(accounts.sorted { $0.name < $1.name }) { account in
                         NavigationLink(value: account) {
-                            LabeledContent(account.name, value: account.balance, format: .currency(code: "MXN"))
+                            LabeledContent(account.name, value: account.balance, format: .currency(code: EnvironmentVariable.currencyCode))
                         }
                     }
                     .onDelete { indexSet in
@@ -43,13 +43,13 @@ struct AccountView: View {
                                 ForEach(account.transactions.sorted { $0.date > $1.date }, id: \Transaction.timeStamp) { transaction in
                                     VStack(alignment: .leading) {
                                         HStack {
-                                            Text(transaction.date.formatted())
+                                            Text(transaction.date.formatted(date: .abbreviated, time: .omitted))
                                                 .font(.system(size: 10))
                                             Spacer()
                                             Text(transaction.budgetName)
                                                 .font(.system(size: 10))
                                         }
-                                        LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: "MXN"))
+                                        LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: EnvironmentVariable.currencyCode))
                                             .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .black)
                                         Text(transaction.description ?? "")
                                             .font(.system(size: 10))
