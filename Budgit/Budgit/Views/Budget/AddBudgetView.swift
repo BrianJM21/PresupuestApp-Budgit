@@ -80,7 +80,7 @@ struct AddBudgetView: View {
                     isInvalidField = true
                     return
                 }
-                if let balance = Double(balance), balance > 0, let currentBalance = Double(currentBalance) {
+                if let balance = Double(balance), balance >= 0, let currentBalance = Double(currentBalance) {
                     let newBudget = Budget(name: name, budget: balance, balance: currentBalance, periodicity: periodicity)
                     switch periodicity {
                     case .daily:
@@ -146,7 +146,7 @@ struct AddBudgetView: View {
             }
             .alert("Invalid periodicity", isPresented: $isInvalidPeriodicity) {
                 Button("OK", role: .cancel) {
-                    isInvalidBalance = false
+                    isInvalidPeriodicity = false
                 }
             }
         }
