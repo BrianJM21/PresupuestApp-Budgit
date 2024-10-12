@@ -50,7 +50,7 @@ struct AccountView: View {
                                                 .font(.system(size: 10))
                                         }
                                         LabeledContent(transaction.tile, value: transaction.amount, format: .currency(code: EnvironmentVariable.currencyCode))
-                                            .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .black)
+                                            .foregroundStyle(transaction.type == .expense ? .red : transaction.type == .income ? .green : .primary)
                                         Text(transaction.description ?? "")
                                             .font(.system(size: 10))
                                     }
